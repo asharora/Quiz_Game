@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Quiz</string>
+    <string name="title_activity_home">Home</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_sections">Sections</string>
+    <string name="title_activity_question">Question</string>
+    <string name="title_activity_result">Result</string>
+    <string name="title_activity_my_coupons">MyCoupons</string>
+</resources>
