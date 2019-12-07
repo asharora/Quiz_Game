@@ -15,6 +15,8 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class Sign_Up extends AppCompatActivity {
 
@@ -46,7 +48,22 @@ public class Sign_Up extends AppCompatActivity {
                            if(task.isSuccessful())
                            {
                               Toast.makeText(getApplicationContext(),"REGISTERED SUCCESSFULLY",Toast.LENGTH_SHORT).show();
-                              finish();
+//                             FirebaseDatabase database = FirebaseDatabase.getInstance();
+//                               Log.d("ppppp",FirebaseDatabase.getInstance("https://quiz-game-62f4e.firebaseio.com/")+"");
+//                                 DatabaseReference myRef = database.getReference();
+//                               Log.d("ppppp",myRef+"");
+//                               DatabaseReference chref= myRef.child(signup_email.getText().toString());
+////                               Log.d("database",chref+"");
+////                               chref.setValue(10);
+
+                               // Write a message to the database
+                               FirebaseDatabase database = FirebaseDatabase.getInstance();
+                               DatabaseReference myRef = database.getReference();
+                               Log.d("email",signup_email.getText().toString());
+                               String em=(signup_email.getText().toString().split("@"))[0];
+                               DatabaseReference chif=myRef.child(em);
+                               chif.child("hello").setValue("World !!");
+                               finish();
                            }
                            else
                            {

@@ -47,6 +47,7 @@ public class Login_Page extends AppCompatActivity {
                                     // Sign in success, update UI with the signed-in user's information
                                     Log.d("world", "signInWithEmail:success");
                                     Intent intent=new Intent(Login_Page.this,Home.class);
+                                    intent.putExtra("email",login_email.getText().toString());
                                     startActivity(intent);
 
                                 } else {

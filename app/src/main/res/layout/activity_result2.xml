@@ -21,6 +21,7 @@
 
 
             <TextView
+                android:id="@+id/result_status"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="#c2204a"
@@ -62,16 +63,6 @@
                         android:textSize="12dp"
                         android:textStyle="bold" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="4dp"
-                        android:layout_marginBottom="8dp"
-                        android:text="76"
-                        android:textColor="#fff"
-                        android:textSize="24dp"
-                        android:textStyle="bold" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -100,6 +91,7 @@
 
 
         </LinearLayout>
+
     </ScrollView>
 
     <LinearLayout
@@ -111,14 +103,39 @@
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp">
 
+
         <Button
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="PLAY ANOTHER"
-            android:layout_weight=".5"
+            android:layout_marginRight="100dp"
             android:textColor="#fff"
-            android:background="@drawable/hospitall"
-            android:layout_marginLeft="4dp" />
+            android:background="#c2204a"
+            android:layout_marginLeft="100dp" />
     </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/result_progressbar"
+        style="?android:progressBarStyleHorizontal"
+        android:layout_width="383dp"
+        android:layout_height="252dp"
+        android:layout_marginTop="250dp"
+        android:progress="80"
+        android:progressDrawable="@drawable/circle"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="InvalidId" />
+
+    <TextView
+        android:id="@+id/result_score"
+        android:layout_width="134dp"
+        android:layout_height="118dp"
+        android:layout_marginLeft="130dp"
+        android:layout_marginTop="340dp"
+        android:text="HEllo"
+        android:textSize="50dp"
+        android:textColor="#c2204a"/>
 
 </RelativeLayout>

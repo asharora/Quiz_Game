@@ -75,6 +75,7 @@
             </RelativeLayout>
 
             <TextView
+                android:id="@+id/question_question_no"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
@@ -85,6 +86,7 @@
                 android:textSize="16dp" />
 
             <TextView
+                android:id="@+id/question_question"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
@@ -111,6 +113,7 @@
                     android:layout_weight="1">
 
                     <TextView
+                        android:id="@+id/question_choice1"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:text="10"
@@ -128,6 +131,7 @@
                     android:layout_weight="1">
 
                     <TextView
+                        android:id="@+id/question_choice2"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:text="32"
@@ -158,6 +162,7 @@
                     android:layout_weight="1">
 
                     <TextView
+                        android:id="@+id/question_choice3"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:text="12"
@@ -175,6 +180,7 @@
                     android:layout_weight="1">
 
                     <TextView
+                        android:id="@+id/question_choice4"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:text="08"
@@ -186,8 +192,27 @@
 
 
 
+
             </LinearLayout>
+
+
+
         </LinearLayout>
     </ScrollView>
+
+    <Button
+        android:id="@+id/question_confirm"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="100dp"
+        android:layout_marginRight="100dp"
+        android:layout_marginTop="500dp"
+        android:text="Confirm Answer"
+        android:textAllCaps="false"
+        android:textColor="#fff"
+        android:background="#50c0d1"
+        android:textSize="18sp" />
+
+
 
 </RelativeLayout>
