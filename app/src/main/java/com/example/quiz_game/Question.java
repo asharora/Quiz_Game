@@ -35,6 +35,23 @@ public class Question extends AppCompatActivity {
    static  int count_Score=0;
    static Button question_confirm;
     static int idx=0;
+    String url;
+
+//    void geturl(){
+//        Intent intent=new Intent();
+//        String name= intent.getStringExtra("name");
+//        if(name.equals("Countries")){
+//          url="https://api.myjson.com/bins/1a8ud2";
+//        }else if(name.equals("G.K.")){
+//            url="https://api.myjson.com/bins/1a8ud2";
+//        }else if(name.equals("Movies")){
+//            url="https://api.myjson.com/bins/1a8ud2";
+//        }else if(name.equals(("Sports"))) {
+//            url="https://api.myjson.com/bins/1a8ud2";
+//        }else if(name.equals("music")){
+//            url="https://api.myjson.com/bins/1a8ud2";
+//        }
+//    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,8 +65,8 @@ public class Question extends AppCompatActivity {
         question_question_no=findViewById(R.id.question_question_no);
         question_confirm=findViewById(R.id.question_confirm);
          RequestQueue queue= Volley.newRequestQueue(this);
-        String url = "https://api.myjson.com/bins/1a8ud2";
-
+       String url = "https://api.myjson.com/bins/1a8ud2";
+        //geturl();
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
                 (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
 
@@ -86,15 +103,11 @@ public class Question extends AppCompatActivity {
                                 @Override
                                 public void onClick(View view) {
                                     Log.d("ppppp",idx+"");
-                                    show_question(questions, idx);
                                     clear_answer();
+                                    show_question(questions, idx);
+
                                     idx++;
-                                    if(idx>=10)
-                                    {
-                                        Intent intent=new Intent(Question.this,Result.class);
-                                        intent.putExtra("score",count_Score);
-                                        startActivity(intent);
-                                    }
+
 
 
 
@@ -123,95 +136,92 @@ public class Question extends AppCompatActivity {
     }
 
 
-    public static void show_question(Application_Question[] questions, int id)
+    public void show_question(Application_Question[] questions, int id)
     {
-        Application_Question question=questions[id];
-        String ques=question.getQuestion();
-        String ch1=question.getAnswers().get(0);
-        String ch2=question.getAnswers().get(1);
-        String ch3=question.getAnswers().get(2);
-        String ch4=question.getAnswers().get(3);
-        final String correct_ans=question.getCorrectAnswer();
+        if(idx>=10)
+        {
+            Intent intent=new Intent(Question.this,Result.class);
+            intent.putExtra("score",count_Score);
+            startActivity(intent);
+        }
+        else {
+            Application_Question question = questions[id];
+            String ques = question.getQuestion();
+            String ch1 = question.getAnswers().get(0);
+            String ch2 = question.getAnswers().get(1);
+            String ch3 = question.getAnswers().get(2);
+            String ch4 = question.getAnswers().get(3);
+            final String correct_ans = question.getCorrectAnswer();
 
-        question_question.setText(ques);
-        question_choice1.setText(ch1);
-        question_choice2.setText(ch2);
-        question_choice3.setText(ch3);
-        question_choice4.setText(ch4);
-        ///////////////////////////////
-        question_choice1.setOnClickListener(new View.OnClickListener() {
-                        @Override
-            public void onClick(View view) {
-                if(question_choice1.getText().toString().equals(correct_ans))
-                {
-                    question_choice1.setBackgroundColor(Color.parseColor("#7CFC00"));
-                    count_Score++;
-                    return;
+            question_question.setText(ques);
+            question_question_no.setText((id + 1) + " / 10");
+            question_choice1.setText(ch1);
+            question_choice2.setText(ch2);
+            question_choice3.setText(ch3);
+            question_choice4.setText(ch4);
+            ///////////////////////////////
+            question_choice1.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (question_choice1.getText().toString().equals(correct_ans)) {
+                        question_choice1.setBackgroundColor(Color.parseColor("#7CFC00"));
+                        count_Score++;
+                        return;
+                    } else {
+                        question_choice1.setBackgroundColor(Color.parseColor("#FF0000"));
+                        return;
+                    }
                 }
-                else
-                {
-                    question_choice1.setBackgroundColor(Color.parseColor("#FF0000"));
-                    return;
-                }
-            }
-        });
+            });
 
-        //////////////////////////////
-        question_choice2.setOnClickListener(new View.OnClickListener() {
+            //////////////////////////////
+            question_choice2.setOnClickListener(new View.OnClickListener() {
 
-            @Override
-            public void onClick(View view) {
-                if(question_choice2.getText().toString().equals(correct_ans))
-                {
-                    question_choice2.setBackgroundColor(Color.parseColor("#7CFC00"));
-                    count_Score++;
-                    return;
+                @Override
+                public void onClick(View view) {
+                    if (question_choice2.getText().toString().equals(correct_ans)) {
+                        question_choice2.setBackgroundColor(Color.parseColor("#7CFC00"));
+                        count_Score++;
+                        return;
 
+                    } else {
+                        question_choice2.setBackgroundColor(Color.parseColor("#FF0000"));
+                        count_Score++;
+                        return;
+                    }
                 }
-                else
-                {
-                    question_choice2.setBackgroundColor(Color.parseColor("#FF0000"));
-                    count_Score++;
-                    return;
-                }
-            }
-        });
+            });
 
-        ///////////////////
-        question_choice3.setOnClickListener(new View.OnClickListener() {
-                     @Override
-            public void onClick(View view) {
-                if(question_choice3.getText().toString().equals(correct_ans))
-                {
-                    question_choice3.setBackgroundColor(Color.parseColor("#7CFC00"));
-                    count_Score++;
-                    return;
+            ///////////////////
+            question_choice3.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (question_choice3.getText().toString().equals(correct_ans)) {
+                        question_choice3.setBackgroundColor(Color.parseColor("#7CFC00"));
+                        count_Score++;
+                        return;
+                    } else {
+                        question_choice3.setBackgroundColor(Color.parseColor("#FF0000"));
+                        return;
+                    }
                 }
-                else
-                {
-                    question_choice3.setBackgroundColor(Color.parseColor("#FF0000"));
-                    return;
-                }
-            }
-        });
+            });
 
-        ////////////////////////
-        question_choice4.setOnClickListener(new View.OnClickListener() {
-                      @Override
-            public void onClick(View view) {
-                if(question_choice4.getText().toString().equals(correct_ans))
-                {
-                    question_choice4.setBackgroundColor(Color.parseColor("#7CFC00"));
-                    count_Score++;
-                    return;
+            ////////////////////////
+            question_choice4.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (question_choice4.getText().toString().equals(correct_ans)) {
+                        question_choice4.setBackgroundColor(Color.parseColor("#7CFC00"));
+                        count_Score++;
+                        return;
+                    } else {
+                        question_choice4.setBackgroundColor(Color.parseColor("#FF0000"));
+                        return;
+                    }
                 }
-                else
-                {
-                    question_choice4.setBackgroundColor(Color.parseColor("#FF0000"));
-                    return;
-                }
-            }
-        });
+            });
+        }
         //////////////////////////
     }
 

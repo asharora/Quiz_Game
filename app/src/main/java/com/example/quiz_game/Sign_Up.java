@@ -62,7 +62,7 @@ public class Sign_Up extends AppCompatActivity {
                                Log.d("email",signup_email.getText().toString());
                                String em=(signup_email.getText().toString().split("@"))[0];
                                DatabaseReference chif=myRef.child(em);
-                               chif.child("hello").setValue("World !!");
+                               chif.child("High_Score").setValue(0);
                                finish();
                            }
                            else
